@@ -1,0 +1,248 @@
+/* ============================================================
+   dropdown.css — 네비게이션 2컬럼 드롭다운 메가 메뉴
+   ============================================================ */
+
+/* ── 탭 래퍼 ── */
+.nav-item {
+    position: relative;
+    /* 자신 기준으로 드롭다운 위치 */
+    list-style: none;
+}
+
+/* 드롭다운 화살표 아이콘 */
+.nav-link-dd {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dd-arrow {
+    transition: transform 0.25s ease;
+    opacity: 0.55;
+    flex-shrink: 0;
+}
+
+.nav-item:hover .dd-arrow,
+.nav-item.open .dd-arrow {
+    transform: rotate(180deg);
+    opacity: 1;
+}
+
+/* ── 드롭다운 패널 ── */
+.nav-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    /* nav 바 바로 아래 */
+    left: 0;
+    transform: none;
+    width: 340px;
+    background: var(--white);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: 0 24px 60px rgba(28, 25, 22, 0.14), 0 4px 16px rgba(28, 25, 22, 0.06);
+    border-top: 2px solid var(--primary);
+
+    /* 기본 숨김 */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+    z-index: 2000;
+}
+
+/* hover / open 시 표시 */
+.nav-item:hover .nav-dropdown,
+.nav-item.open .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* nav bar 자체가 relative여야 드롭다운이 기준 잡힘 */
+.nav-inner {
+    position: relative;
+}
+
+/* ── 드롭다운 내부 2컬럼 그리드 ── */
+.nav-dropdown-inner {
+    display: block;
+}
+
+/* ── 공통 컬럼 스타일 ── */
+.dd-col {
+    padding: 28px 24px;
+}
+
+
+
+.dd-preview {
+    background: var(--light);
+    border-radius: 0 0 var(--radius-lg) 0;
+}
+
+/* ── 카테고리 레이블 ── */
+.dd-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 16px;
+}
+
+/* ── 링크 목록 ── */
+.dd-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dd-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--dark);
+    transition: background 0.18s ease;
+}
+
+.dd-link:hover {
+    background: var(--light);
+}
+
+.dd-link-icon {
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    border: 1px solid var(--light-2);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color 0.18s;
+}
+
+.dd-link:hover .dd-link-icon {
+    border-color: var(--primary-light);
+}
+
+.dd-link div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.dd-link strong {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.dd-link span {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ── 우측 프리뷰 카드 ── */
+.dd-card {
+    background: var(--white);
+    border: 1px solid var(--light-2);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.dd-card-emoji {
+    font-size: 36px;
+    width: 64px;
+    height: 64px;
+    background: var(--light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dd-card-title {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.55;
+}
+
+.dd-card-link {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.18s;
+}
+
+.dd-card-link:hover {
+    color: var(--primary-dark);
+}
+
+/* ── 효과 탭 숫자 통계 카드 ── */
+.dd-card-stats {
+    text-align: left;
+    gap: 14px;
+    align-items: stretch;
+}
+
+.dd-stat-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--light-2);
+}
+
+.dd-stat-row:last-child {
+    border-bottom: none;
+}
+
+.dd-stat-num {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark);
+    min-width: 60px;
+}
+
+.dd-stat-num small {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+    margin-left: 2px;
+}
+
+.dd-stat-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.55;
+}
+
+/* ── 요금제 탭 CTA 카드 ── */
+.dd-card-cta .dd-card-emoji {
+    background: rgba(217, 119, 87, 0.12);
+}
+
+/* ── 반응형: 모바일 드롭다운 숨김 ── */
+@media (max-width: 640px) {
+    .nav-dropdown {
+        display: none;
+    }
+
+    .dd-arrow {
+        display: none;
+    }
+}

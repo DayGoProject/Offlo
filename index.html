@@ -8,13 +8,12 @@
   <meta name="description" content="스마트폰과 앱 사용 습관을 분석하고, 건강한 디지털 생활을 만들어드립니다. DetoxDay와 함께 시작하세요." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Pretendard:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/gh/spoqa/spoqa-han-sans@latest/css/SpoqaHanSansNeo.css" rel="stylesheet" />
   <!-- CSS: 섹션별 분리 -->
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/announcement.css" />
   <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/dropdown.css" />
   <link rel="stylesheet" href="css/hero.css" />
   <link rel="stylesheet" href="css/stats.css" />
   <link rel="stylesheet" href="css/features.css" />
@@ -39,11 +38,198 @@
         <span class="nav-logo-text">DetoxDay</span>
       </a>
       <ul class="nav-menu" id="nav-menu">
-        <li><a href="#features" class="nav-link">기능</a></li>
-        <li><a href="#stats" class="nav-link">효과</a></li>
-        <li><a href="#how" class="nav-link">사용법</a></li>
-        <li><a href="#" class="nav-link">요금제</a></li>
+
+        <!-- 기능 탭 -->
+        <li class="nav-item has-dropdown" id="nav-tab-features">
+          <a href="#features" class="nav-link nav-link-dd">
+            기능 <svg class="dd-arrow" width="12" height="7" viewBox="0 0 12 7" fill="none">
+              <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <div class="nav-dropdown-inner">
+              <!-- 좌: 링크 목록 -->
+              <div class="dd-col dd-links">
+                <p class="dd-label">서비스 기능</p>
+                <ul>
+                  <li>
+                    <a href="#features" class="dd-link">
+                      <span class="dd-link-icon">📊</span>
+                      <div>
+                        <strong>스크린 타임 분석</strong>
+                        <span>AI가 사용 패턴을 파악해드립니다</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#how" class="dd-link">
+                      <span class="dd-link-icon">🪴</span>
+                      <div>
+                        <strong>식물 키우기 보상</strong>
+                        <span>디톡스 달성 시 반려 식물이 자라요</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="dd-link">
+                      <span class="dd-link-icon">🏅</span>
+                      <div>
+                        <strong>배지 & 칭호 시스템</strong>
+                        <span>재밌는 등급으로 동기를 부여해요</span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </li>
+
+        <!-- 효과 탭 -->
+        <li class="nav-item has-dropdown" id="nav-tab-stats">
+          <a href="#stats" class="nav-link nav-link-dd">
+            효과 <svg class="dd-arrow" width="12" height="7" viewBox="0 0 12 7" fill="none">
+              <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <div class="nav-dropdown-inner">
+              <div class="dd-col dd-links">
+                <p class="dd-label">사용자 변화</p>
+                <ul>
+                  <li>
+                    <a href="#stats" class="dd-link">
+                      <span class="dd-link-icon">📉</span>
+                      <div>
+                        <strong>스크린 타임 감소</strong>
+                        <span>첫 주 평균 30% 이상 줄어들었어요</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#stats" class="dd-link">
+                      <span class="dd-link-icon">😴</span>
+                      <div>
+                        <strong>수면의 질 개선</strong>
+                        <span>취침 전 습관 변화로 숙면을 경험하세요</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#stats" class="dd-link">
+                      <span class="dd-link-icon">🧠</span>
+                      <div>
+                        <strong>집중력 향상</strong>
+                        <span>94%의 사용자가 집중력이 좋아졌다고 해요</span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </li>
+
+        <!-- 사용법 탭 -->
+        <li class="nav-item has-dropdown" id="nav-tab-how">
+          <a href="#how" class="nav-link nav-link-dd">
+            사용법 <svg class="dd-arrow" width="12" height="7" viewBox="0 0 12 7" fill="none">
+              <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <div class="nav-dropdown-inner">
+              <div class="dd-col dd-links">
+                <p class="dd-label">3단계로 끝나요</p>
+                <ul>
+                  <li>
+                    <a href="#features" class="dd-link">
+                      <span class="dd-link-icon">①</span>
+                      <div>
+                        <strong>캡처 업로드</strong>
+                        <span>스크린 타임 화면을 사진으로 올려요</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#features" class="dd-link">
+                      <span class="dd-link-icon">②</span>
+                      <div>
+                        <strong>AI 분석 & 솔루션</strong>
+                        <span>맞춤 디톡스 방법을 추천받아요</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#how" class="dd-link">
+                      <span class="dd-link-icon">③</span>
+                      <div>
+                        <strong>실천하고 보상받기</strong>
+                        <span>달성하면 식물이 자라고 배지를 얻어요</span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </li>
+
+        <!-- 요금제 탭 -->
+        <li class="nav-item has-dropdown" id="nav-tab-pricing">
+          <a href="#" class="nav-link nav-link-dd">
+            요금제 <svg class="dd-arrow" width="12" height="7" viewBox="0 0 12 7" fill="none">
+              <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+          <div class="nav-dropdown">
+            <div class="nav-dropdown-inner">
+              <div class="dd-col dd-links">
+                <p class="dd-label">플랜 선택</p>
+                <ul>
+                  <li>
+                    <a href="#" class="dd-link">
+                      <span class="dd-link-icon">🌿</span>
+                      <div>
+                        <strong>Free</strong>
+                        <span>기본 분석 + 식물 1개 — 무료</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="dd-link">
+                      <span class="dd-link-icon">🌳</span>
+                      <div>
+                        <strong>Pro</strong>
+                        <span>무제한 분석 + 배지 + 공유 기능</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="dd-link">
+                      <span class="dd-link-icon">🏢</span>
+                      <div>
+                        <strong>Enterprise</strong>
+                        <span>팀 단위 관리 및 리포트</span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </li>
+
       </ul>
+
       <div class="nav-actions">
         <a href="#" class="nav-login">로그인</a>
         <a href="#" class="btn btn-dark" id="nav-cta">무료로 시작하기</a>
@@ -63,8 +249,8 @@
         <em>자유로워지세요</em>
       </h1>
       <p class="hero-sub reveal reveal-delay-2">
-        스마트폰 사용 습관을 분석하고, 나만을 위한 디톡스 플랜을 제공합니다.<br />
-        단 7일이면 달라진 나를 만날 수 있어요.
+        내 스마트폰 스크린 타임 화면을 캡처해서 올려주세요.<br />
+        AI가 나의 사용 습관을 분석하고, 나만의 맞춤형 디톡스 솔루션을 제안합니다.
       </p>
       <div class="hero-actions reveal reveal-delay-3">
         <a href="#" class="btn btn-primary" id="hero-cta-primary">무료로 시작하기</a>
@@ -149,35 +335,20 @@
   <section class="feature" id="features">
     <div class="container feature-grid">
       <div class="feature-text reveal">
-        <span class="section-label">데이터 분석</span>
-        <h2 class="feature-title">내 습관을 정확하게<br />파악해드립니다</h2>
+        <span class="section-label">캡처 업로드</span>
+        <h2 class="feature-title">스크린 타임 캡처본을<br />그대로 올려주세요</h2>
         <p class="feature-desc">
-          앱별 사용 시간, 접속 빈도, 취침 전 사용 패턴까지 — DetoxDay가 모든 데이터를 분석해 나에게 꼭 맞는 인사이트를 제공합니다.
+          번거로운 연동 과정은 필요 없습니다. 스마트폰의 내 스크린 타임 화면이나 자주 쓰는 앱의 사용 시간 화면을 캡처해서 업로드하기만 하세요. AI가 이미지를 인식하여 데이터를 추출합니다.
         </p>
-        <a href="#" class="btn btn-primary" id="feature1-cta">무료로 분석 시작</a>
+        <a href="#" class="btn btn-primary" id="feature1-cta">사진 업로드하기</a>
       </div>
       <div class="feature-visual reveal reveal-delay-1">
-        <div class="feature-card" id="feature-card-1">
-          <div class="insight-header">📊 주간 리포트</div>
-          <div class="insight-grid">
-            <div class="insight-box highlight">
-              <div class="insight-label">이번 주</div>
-              <div class="insight-value">42h 18m</div>
-            </div>
-            <div class="insight-box">
-              <div class="insight-label">지난 주</div>
-              <div class="insight-value">51h 02m</div>
-            </div>
-            <div class="insight-box">
-              <div class="insight-label">목표</div>
-              <div class="insight-value">28h 00m</div>
-            </div>
-            <div class="insight-box positive">
-              <div class="insight-label">개선율</div>
-              <div class="insight-value">↓ 17%</div>
-            </div>
+        <div class="feature-card upload-card" id="feature-card-1">
+          <div class="upload-area">
+            <span class="upload-icon">📸</span>
+            <p><strong>클릭</strong>하여 이미지를 선택하거나<br>여기로 드래그 앤 드롭 하세요</p>
+            <span class="upload-hint">지원: JPG, PNG (최대 10MB)</span>
           </div>
-          <div class="insight-tip">💡 취침 1시간 전 스마트폰 사용을 줄이면 목표에 더 빨리 도달할 수 있어요.</div>
         </div>
       </div>
     </div>
@@ -187,41 +358,49 @@
   <section class="feature feature-alt" id="how">
     <div class="container feature-grid feature-grid-reverse">
       <div class="feature-visual reveal">
-        <div class="feature-card" id="feature-card-2">
-          <div class="challenge-header">🎯 오늘의 챌린지</div>
-          <div class="challenge-list">
-            <div class="challenge-item done">
-              <span class="check">✓</span>
-              <span>오전 스마트폰 없이 30분 시작</span>
-            </div>
-            <div class="challenge-item done">
-              <span class="check">✓</span>
-              <span>점심 식사 중 폰 내려놓기</span>
-            </div>
-            <div class="challenge-item active">
-              <span class="check-empty">○</span>
-              <span>SNS 앱 30분 이내로 사용하기</span>
-            </div>
-            <div class="challenge-item">
-              <span class="check-empty">○</span>
-              <span>취침 1시간 전 블루라이트 차단</span>
+        <div class="feature-card gamification-card" id="feature-card-2">
+
+          <!-- 상단: 칭호 배지 -->
+          <div class="badge-header">
+            <span class="badge-icon">🥉</span>
+            <div class="badge-info">
+              <span class="badge-subtitle">현재 호칭</span>
+              <strong class="badge-title">스마트폰 노예 탈출중</strong>
             </div>
           </div>
-          <div class="challenge-progress">
-            <div class="progress-label">오늘의 달성률 <strong>50%</strong></div>
+
+          <!-- 중앙: 가상 식물 일러스트 영역 -->
+          <div class="plant-display">
+            <div class="plant-stage">
+              <span class="plant-emoji">🌱</span>
+            </div>
+            <p class="plant-message">"조금만 더 버티면 한 단계 자랄 거예요!"</p>
+          </div>
+
+          <!-- 하단: 경험치 바 -->
+          <div class="xp-progress">
+            <div class="xp-labels">
+              <span class="xp-current">경험치 80%</span>
+              <span class="xp-next">다음: 🥈 현생 복귀자</span>
+            </div>
             <div class="progress-bar">
-              <div class="progress-fill" style="width: 50%"></div>
+              <div class="progress-fill xp-fill" style="width: 80%"></div>
             </div>
           </div>
+
+          <!-- 공유 버튼 -->
+          <button class="btn btn-dark share-btn">
+            <span class="share-icon">📸</span> 인스타그램 스토리에 자랑하기
+          </button>
         </div>
       </div>
       <div class="feature-text reveal reveal-delay-1">
-        <span class="section-label">맞춤 챌린지</span>
-        <h2 class="feature-title">작은 습관이<br />큰 변화를 만듭니다</h2>
+        <span class="section-label">확실한 보상</span>
+        <h2 class="feature-title">화면을 끈 시간만큼,<br />나만의 식물이 자라납니다</h2>
         <p class="feature-desc">
-          AI가 분석한 내 패턴을 바탕으로, 무리하지 않고 실천할 수 있는 일일 챌린지를 제안합니다. 매일 조금씩, 확실하게 변화하세요.
+          목표를 달성하고 사진을 인증하면 식물이 영양분을 얻어 자라납니다. 특정 단계에 도달할 때마다 특별한 칭호 배지가 해금됩니다. 재밌는 칭호를 얻고 친구들에게 나의 '현생 복귀'를 자랑해보세요!
         </p>
-        <a href="#" class="btn btn-primary" id="feature2-cta">챌린지 시작하기</a>
+        <a href="#" class="btn btn-primary" id="feature2-cta">식물 키우기 시작</a>
       </div>
     </div>
   </section>
@@ -230,7 +409,7 @@
   <section class="cta-banner">
     <div class="container">
       <h2 class="cta-title reveal">지금 바로 시작하세요</h2>
-      <p class="cta-sub reveal reveal-delay-1">무료로 7일 체험하고, 달라진 나를 직접 확인하세요.</p>
+      <p class="cta-sub reveal reveal-delay-1">내 스크린 타임 화면을 올리고, AI의 맞춤형 조언을 바로 확인해보세요.</p>
       <a href="#" class="btn btn-dark" id="cta-banner-btn">무료로 시작하기</a>
     </div>
   </section>

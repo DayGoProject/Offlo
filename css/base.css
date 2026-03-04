@@ -3,7 +3,7 @@
    Tokens · Reset · Utilities · Animations
    ============================================================ */
 
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url('https://cdn.jsdelivr.net/gh/spoqa/spoqa-han-sans@latest/css/SpoqaHanSansNeo.css');
 
 /* ── CSS Tokens ── */
 :root {
@@ -19,8 +19,8 @@
     --text-muted: #7A7268;
     --text-light: #B0A898;
 
-    --font-serif: 'Playfair Display', Georgia, serif;
-    --font-sans: 'Pretendard', -apple-system, sans-serif;
+    --font-serif: 'Spoqa Han Sans Neo', -apple-system, sans-serif;
+    --font-sans: 'Spoqa Han Sans Neo', -apple-system, sans-serif;
 
     --radius-sm: 8px;
     --radius-md: 16px;

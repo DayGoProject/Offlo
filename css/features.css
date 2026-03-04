@@ -52,150 +52,208 @@
     border: 1px solid var(--light-2);
 }
 
-/* ── Feature 1: 인사이트 카드 ── */
-.insight-header,
-.challenge-header {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--dark);
-    margin-bottom: 20px;
+/* ── Feature 1: 업로드 카드 ── */
+.upload-card {
+    padding: 0;
+    overflow: hidden;
 }
 
-.insight-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 20px;
-}
-
-.insight-box {
-    padding: 16px;
-    background: var(--light);
-    border-radius: var(--radius-md);
-}
-
-.insight-box.highlight {
-    background: var(--primary);
-    color: var(--white);
-}
-
-.insight-box.highlight .insight-label {
-    color: rgba(255, 255, 255, 0.75);
-}
-
-.insight-box.highlight .insight-value {
-    color: var(--white);
-}
-
-.insight-box.positive .insight-value {
-    color: #2ecc71;
-    font-weight: 700;
-}
-
-.insight-label {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-}
-
-.insight-value {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--dark);
-}
-
-.insight-tip {
-    font-size: 13px;
-    color: var(--text-muted);
-    background: var(--light);
-    padding: 12px 16px;
-    border-radius: var(--radius-sm);
-    border-left: 3px solid var(--primary);
-    line-height: 1.6;
-}
-
-/* ── Feature 2: 챌린지 카드 ── */
-.challenge-list {
+.upload-area {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+    text-align: center;
+    background: repeating-linear-gradient(45deg,
+            var(--light-2),
+            var(--light-2) 10px,
+            var(--light) 10px,
+            var(--light) 20px);
+    border: 2px dashed var(--primary-light);
+    border-radius: calc(var(--radius-lg) - 2px);
+    margin: 8px;
+    cursor: pointer;
+    transition: var(--transition);
 }
 
-.challenge-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    border-radius: var(--radius-sm);
+.upload-area:hover {
     background: var(--light);
-    font-size: 14px;
-    color: var(--text-muted);
+    border-color: var(--primary);
 }
 
-.challenge-item.done {
-    background: rgba(217, 119, 87, 0.08);
-    color: var(--dark);
+.upload-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+    opacity: 0.8;
 }
 
-.challenge-item.active {
-    background: rgba(217, 119, 87, 0.15);
-    color: var(--dark);
-    font-weight: 600;
-    border: 1.5px solid rgba(217, 119, 87, 0.4);
+.upload-area p {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--dark-2);
+    margin-bottom: 12px;
 }
 
-.check {
-    width: 20px;
-    height: 20px;
-    background: var(--primary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    color: white;
-    flex-shrink: 0;
-}
-
-.check-empty {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--light-2);
-    border-radius: 50%;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    color: var(--text-light);
-}
-
-.progress-label {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-}
-
-.progress-label strong {
+.upload-area strong {
     color: var(--primary);
 }
 
+.upload-hint {
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+/* ── Feature 2: 게이미피케이션 (식물 & 뱃지) 카드 ── */
+.gamification-card {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 40px 32px;
+}
+
+/* 뱃지 헤더 */
+.badge-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--light-2);
+}
+
+.badge-icon {
+    font-size: 32px;
+    background: var(--light);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.badge-subtitle {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* 식물 일러스트 영역 */
+.plant-display {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.plant-stage {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 24px;
+    background: var(--light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    box-shadow: inset 0 -12px 24px rgba(0, 0, 0, 0.04);
+    position: relative;
+}
+
+.plant-stage::after {
+    content: '';
+    position: absolute;
+    bottom: 24px;
+    width: 70px;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 50%;
+    filter: blur(3px);
+    z-index: 0;
+}
+
+.plant-emoji {
+    position: relative;
+    z-index: 1;
+    animation: floatPlant 4s ease-in-out infinite;
+}
+
+@keyframes floatPlant {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.plant-message {
+    font-size: 15px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* 경험치 바 영역 */
+.xp-progress {
+    background: var(--light);
+    padding: 16px;
+    border-radius: var(--radius-sm);
+}
+
+.xp-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.xp-current {
+    color: var(--primary);
+}
+
+.xp-next {
+    color: var(--text-muted);
+}
+
 .progress-bar {
-    height: 6px;
-    background: var(--light-2);
+    height: 8px;
+    background: rgba(28, 25, 22, 0.06);
     border-radius: 99px;
     overflow: hidden;
 }
 
-.progress-fill {
+.xp-fill {
     height: 100%;
     background: var(--primary);
     border-radius: 99px;
     transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 공유 버튼 */
+.share-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 14.5px;
+    padding: 16px;
+}
+
+.share-icon {
+    font-size: 18px;
 }
 
 /* Responsive */
