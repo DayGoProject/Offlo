@@ -1,0 +1,221 @@
+/* Hero Section — hero.css 완전 이식 */
+.hero {
+    background: var(--dark);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 24px 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -100px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(217, 119, 87, 0.18) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -50px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(217, 119, 87, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.hero-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero .section-label {
+    color: var(--primary);
+}
+
+.hero-title {
+    font-size: clamp(44px, 5.5vw, 72px);
+    font-weight: 700;
+    line-height: 1.12;
+    color: var(--white);
+    margin-bottom: 24px;
+}
+
+.hero-title em {
+    font-style: italic;
+    color: var(--primary-light);
+}
+
+.hero-sub {
+    font-size: 17px;
+    color: var(--text-light);
+    line-height: 1.75;
+    margin-bottom: 40px;
+    max-width: 460px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Demo Card */
+.hero-card {
+    background: var(--dark-2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: var(--shadow-card);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.card-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.card-dot.red {
+    background: #ff5f57;
+}
+
+.card-dot.yellow {
+    background: #febc2e;
+}
+
+.card-dot.green {
+    background: #28c840;
+}
+
+.card-title-small {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-left: auto;
+}
+
+.screen-bar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.screen-bar-item {
+    display: grid;
+    grid-template-columns: 90px 1fr 52px;
+    align-items: center;
+    gap: 10px;
+}
+
+.app-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+.bar-wrap {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.app-time {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--white);
+    text-align: right;
+}
+
+.card-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+.card-total strong {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.card-badge {
+    margin-top: 12px;
+    background: rgba(217, 119, 87, 0.15);
+    border: 1px solid rgba(217, 119, 87, 0.3);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary-light);
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        text-align: center;
+    }
+
+    .hero-sub {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-visual {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero {
+        padding: 80px 20px 60px;
+    }
+}

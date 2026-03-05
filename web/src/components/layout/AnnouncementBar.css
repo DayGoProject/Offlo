@@ -1,0 +1,41 @@
+.announcement-bar {
+    background: var(--dark);
+    color: var(--white);
+    text-align: center;
+    padding: 10px 24px;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    position: relative;
+}
+
+.announcement-link {
+    color: var(--primary-light);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.announcement-link:hover {
+    text-decoration: underline;
+}
+
+.announcement-close {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 4px;
+    transition: var(--transition);
+}
+
+.announcement-close:hover {
+    color: var(--white);
+}

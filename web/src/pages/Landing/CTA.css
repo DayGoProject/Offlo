@@ -1,0 +1,24 @@
+.cta-banner {
+    padding: 120px 24px;
+    background: var(--light-2);
+    text-align: center;
+}
+
+.cta-title {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 16px;
+}
+
+.cta-sub {
+    font-size: 17px;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+@media (max-width: 640px) {
+    .cta-banner {
+        padding: 80px 20px;
+    }
+}

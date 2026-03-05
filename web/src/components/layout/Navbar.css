@@ -1,0 +1,213 @@
+/* Navbar CSS — localhost:3000 nav.css + dropdown.css 통합 */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(28, 25, 22, 0.08);
+    transition: var(--transition);
+}
+
+.nav.scrolled {
+    box-shadow: 0 4px 24px rgba(28, 25, 22, 0.08);
+}
+
+.nav-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--dark);
+    flex-shrink: 0;
+}
+
+.nav-logo-icon {
+    color: var(--primary);
+    font-size: 16px;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--dark-3);
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.nav-link:hover {
+    color: var(--dark);
+    background: var(--light);
+}
+
+.dd-arrow {
+    transition: transform 0.2s ease;
+}
+
+.dd-arrow.open {
+    transform: rotate(180deg);
+}
+
+/* Dropdown */
+.nav-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateX(-50%) translateY(-8px);
+}
+
+.nav-item.active .nav-dropdown {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown-inner {
+    background: var(--white);
+    border: 1px solid rgba(28, 25, 22, 0.08);
+    border-radius: var(--radius-md);
+    box-shadow: 0 16px 48px rgba(28, 25, 22, 0.12);
+    padding: 12px;
+    min-width: 260px;
+}
+
+.dd-col {}
+
+.dd-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.dd-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    color: var(--dark);
+}
+
+.dd-link:hover {
+    background: var(--light);
+}
+
+.dd-link-icon {
+    font-size: 20px;
+    width: 32px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.dd-link div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.dd-link strong {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.dd-link span {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* Nav Actions */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.nav-login {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--dark-3);
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+.nav-login:hover {
+    color: var(--dark);
+}
+
+.nav-actions .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
+/* Hamburger */
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    margin-left: auto;
+}
+
+.nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--dark);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .nav-hamburger {
+        display: flex;
+    }
+
+    .nav-actions .btn {
+        display: none;
+    }
+}

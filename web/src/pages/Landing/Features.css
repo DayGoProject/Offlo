@@ -1,0 +1,186 @@
+/* Features Section — features.css 완전 이식 */
+.feature {
+    padding: 120px 0;
+    background: var(--white);
+}
+
+.feature-alt {
+    background: var(--light);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.feature-grid-reverse {
+    direction: rtl;
+}
+
+.feature-grid-reverse>* {
+    direction: ltr;
+}
+
+.feature-title {
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--dark);
+    margin-bottom: 20px;
+}
+
+.feature-desc {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 32px;
+}
+
+/* Upload Card */
+.feature-card {
+    background: var(--dark-2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-xl);
+    padding: 32px;
+    box-shadow: var(--shadow-card);
+}
+
+.upload-card {
+    background: var(--white);
+    border: 2px dashed var(--light-2);
+    box-shadow: none;
+}
+
+.upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 60px 24px;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.upload-icon {
+    font-size: 48px;
+}
+
+.upload-area p {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.upload-area strong {
+    color: var(--dark);
+}
+
+.upload-hint {
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+/* Gamification Card */
+.gamification-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.badge-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.badge-icon {
+    font-size: 28px;
+}
+
+.badge-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.badge-subtitle {
+    font-size: 11px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.badge-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.plant-display {
+    text-align: center;
+    padding: 16px 0;
+}
+
+.plant-stage {
+    font-size: 60px;
+    margin-bottom: 8px;
+}
+
+.plant-message {
+    font-size: 14px;
+    color: var(--text-light);
+    font-style: italic;
+}
+
+.xp-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.xp-current {
+    color: var(--primary-light);
+    font-weight: 600;
+}
+
+.xp-next {
+    color: var(--text-light);
+}
+
+.progress-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+    border-radius: 99px;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.share-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 4px;
+}
+
+@media (max-width: 900px) {
+    .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .feature-grid-reverse {
+        direction: ltr;
+    }
+
+    .feature,
+    .feature-alt {
+        padding: 80px 20px;
+    }
+}
