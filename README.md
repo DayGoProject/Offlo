@@ -46,7 +46,7 @@
 ### 2. 설치 및 실행
 ```bash
 # 1. 레포지토리 클론
-git clone https://github.com/your-username/offlo.git
+git clone https://github.com/DayGoProject/Offlo.git
 
 # 2. 웹 프로젝트 폴더로 이동
 cd offlo/web
