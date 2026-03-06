@@ -39,6 +39,12 @@
     font-size: 16px;
 }
 
+.nav-logo-img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+}
+
 .nav-menu {
     display: flex;
     align-items: center;
@@ -158,6 +164,17 @@
     flex-shrink: 0;
 }
 
+.nav-greeting {
+    font-size: 14px;
+    color: var(--dark-2);
+    margin-right: 12px;
+}
+
+.nav-greeting strong {
+    color: var(--dark);
+    font-weight: 600;
+}
+
 .nav-login {
     font-size: 14.5px;
     font-weight: 500;
@@ -197,7 +214,12 @@
     transition: var(--transition);
 }
 
-/* Responsive */
+@media (max-width: 1024px) {
+    .nav-greeting {
+        display: none;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-menu {
         display: none;

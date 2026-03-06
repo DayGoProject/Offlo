@@ -16,8 +16,12 @@ export default function LoginPage() {
         try {
             await loginWithEmail(email, password);
             navigate('/dashboard');
-        } catch {
-            setError('이메일 또는 비밀번호를 확인해주세요.');
+        } catch (err: any) {
+            if (err.message && err.message.includes('이메일 인증')) {
+                setError(err.message);
+            } else {
+                setError('이메일 또는 비밀번호를 확인해주세요.');
+            }
         } finally { setLoading(false); }
     };
 
@@ -35,8 +39,7 @@ export default function LoginPage() {
         <div className="auth-page">
             <div className="auth-card">
                 <div className="auth-logo">
-                    <span className="nav-logo-icon">◆</span>
-                    <span className="nav-logo-text">Offlo</span>
+                    <img src="/logo.png" alt="Offlo" className="auth-logo-img" />
                 </div>
                 <h1 className="auth-title">다시 오셨군요!</h1>
                 <p className="auth-sub">디지털 디톡스를 계속해볼까요?</p>

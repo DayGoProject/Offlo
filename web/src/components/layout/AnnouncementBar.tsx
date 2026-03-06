@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import { useAuthStore } from '../../store/authStore';
 import './AnnouncementBar.css';
 
 export default function AnnouncementBar() {
     const [visible, setVisible] = useState(true);
-    if (!visible) return null;
+    const { user } = useAuthStore();
+
+    if (!visible || user) return null;
     return (
         <div className="announcement-bar">
             <span>✦ 2,000명이 첫 주에 스크린 타임을 40% 줄였습니다.</span>

@@ -52,8 +52,7 @@ export default function Navbar() {
         <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
             <div className="nav-inner">
                 <Link to="/" className="nav-logo">
-                    <span className="nav-logo-icon">◆</span>
-                    <span className="nav-logo-text">Offlo</span>
+                    <img src="/logo.png" alt="Offlo" className="nav-logo-img" />
                 </Link>
 
                 <ul className={`nav-menu ${menuOpen ? 'open' : ''}`}>
@@ -101,6 +100,9 @@ export default function Navbar() {
                 <div className="nav-actions">
                     {user ? (
                         <>
+                            <span className="nav-greeting">
+                                <strong>{user.displayName || user.email?.split('@')[0] || '사용자'}</strong>님, 오늘 하루는 어떠셨나요?
+                            </span>
                             <Link to="/dashboard" className="nav-login">대시보드</Link>
                             <button className="btn btn-dark" onClick={handleLogout}>로그아웃</button>
                         </>

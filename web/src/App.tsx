@@ -12,6 +12,8 @@ import LoginPage from './pages/Auth/LoginPage';
 import SignupPage from './pages/Auth/SignupPage';
 import DashboardPage from './pages/Dashboard/DashboardPage';
 import AnalysisPage from './pages/Analysis/AnalysisPage';
+import AnalysisLoadingPage from './pages/Analysis/AnalysisLoadingPage';
+import AnalysisResultPage from './pages/Analysis/AnalysisResultPage';
 import HistoryPage from './pages/History/HistoryPage';
 import GoalsPage from './pages/Goals/GoalsPage';
 import GardenPage from './pages/Garden/GardenPage';
@@ -38,6 +40,8 @@ export default function App() {
                 {/* Protected */}
                 <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
                 <Route path="/analysis" element={<ProtectedRoute><AnalysisPage /></ProtectedRoute>} />
+                <Route path="/analysis/loading" element={<ProtectedRoute><AnalysisLoadingPage /></ProtectedRoute>} />
+                <Route path="/analysis/result" element={<ProtectedRoute><AnalysisResultPage /></ProtectedRoute>} />
                 <Route path="/history" element={<ProtectedRoute><HistoryPage /></ProtectedRoute>} />
                 <Route path="/goals" element={<ProtectedRoute><GoalsPage /></ProtectedRoute>} />
                 <Route path="/garden" element={<ProtectedRoute><GardenPage /></ProtectedRoute>} />

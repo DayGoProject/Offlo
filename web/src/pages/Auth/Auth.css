@@ -20,11 +20,14 @@
 .auth-logo {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--dark);
+    justify-content: center;
     margin-bottom: 32px;
+}
+
+.auth-logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
 }
 
 .auth-title {

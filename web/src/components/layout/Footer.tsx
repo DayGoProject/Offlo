@@ -30,8 +30,7 @@ export default function Footer() {
             <div className="container footer-inner">
                 <div className="footer-brand">
                     <Link to="/" className="nav-logo">
-                        <span className="nav-logo-icon">◆</span>
-                        <span className="nav-logo-text">Offlo</span>
+                        <img src="/logo.png" alt="Offlo" className="nav-logo-img" />
                     </Link>
                     <p className="footer-tagline">건강한 디지털 습관을<br />만들어 드립니다.</p>
                 </div>

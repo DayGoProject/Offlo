@@ -1,0 +1,141 @@
+.analysis-container {
+    min-height: 100vh;
+    padding: 120px 24px 60px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.analysis-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+}
+
+.back-btn:hover {
+    color: var(--primary);
+}
+
+.analysis-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.analysis-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.upload-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.drop-zone {
+    border: 2px dashed rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-md);
+    padding: 60px 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--light);
+}
+
+.drop-zone:hover,
+.drag-active {
+    border-color: var(--primary);
+    background: rgba(217, 119, 87, 0.05);
+}
+
+.hidden-input {
+    display: none;
+}
+
+.upload-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+
+.drop-zone h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+.drop-zone p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.preview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-wrapper {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.preview-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: 400px;
+    display: block;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.action-buttons button {
+    flex: 1;
+}
+
+@media (max-width: 600px) {
+    .analysis-container {
+        padding: 100px 16px 40px;
+    }
+
+    .analysis-title {
+        font-size: 2rem;
+    }
+
+    .upload-card {
+        padding: 24px;
+    }
+
+    .drop-zone {
+        padding: 40px 16px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+}

@@ -16,9 +16,10 @@ export default function SignupPage() {
         setError(''); setLoading(true);
         try {
             await signupWithEmail(email, password, name);
-            navigate('/dashboard');
-        } catch {
-            setError('회원가입에 실패했습니다. 이미 사용 중인 이메일일 수 있습니다.');
+            alert('인증 이메일이 발송되었습니다. 메일함에서 링크를 클릭하여 인증을 완료한 후 로그인해주세요.');
+            navigate('/login');
+        } catch (err: any) {
+            setError('회원가입에 실패했습니다. 올바른 이메일인지 확인하거나 다른 이메일을 사용해 주세요.');
         } finally { setLoading(false); }
     };
 
@@ -36,8 +37,7 @@ export default function SignupPage() {
         <div className="auth-page">
             <div className="auth-card">
                 <div className="auth-logo">
-                    <span className="nav-logo-icon">◆</span>
-                    <span className="nav-logo-text">Offlo</span>
+                    <img src="/logo.png" alt="Offlo" className="auth-logo-img" />
                 </div>
                 <h1 className="auth-title">무료로 시작하기</h1>
                 <p className="auth-sub">디지털 디톡스의 첫 걸음을 함께해요</p>

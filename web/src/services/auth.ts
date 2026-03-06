@@ -5,6 +5,7 @@ import {
     GoogleAuthProvider,
     signOut,
     onAuthStateChanged,
+    sendEmailVerification,
     type User,
 } from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
@@ -13,19 +14,33 @@ import { auth, db } from './firebase';
 const googleProvider = new GoogleAuthProvider();
 
 // 이메일 로그인
-export const loginWithEmail = (email: string, password: string) =>
-    signInWithEmailAndPassword(auth, email, password);
+export const loginWithEmail = async (email: string, password: string) => {
+    const credential = await signInWithEmailAndPassword(auth, email, password);
+    // 테스트용 계정 예외 처리
+    if (!credential.user.emailVerified && credential.user.email !== 'test1@test.com') {
+        await signOut(auth);
+        throw new Error('이메일 인증이 완료되지 않았습니다. 메일함을 확인해주세요.');
+    }
+    return credential;
+};
 
 // 이메일 회원가입
 export const signupWithEmail = async (email: string, password: string, name: string) => {
     const credential = await createUserWithEmailAndPassword(auth, email, password);
     const user = credential.user;
+
+    // 이메일 인증 메일 발송
+    await sendEmailVerification(user);
+
     await setDoc(doc(db, 'users', user.uid), {
         name,
         email,
         premium: false,
         createdAt: serverTimestamp(),
     });
+
+    // 인증 전까지는 강제 로그아웃
+    await signOut(auth);
     return credential;
 };
 

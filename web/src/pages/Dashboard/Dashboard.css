@@ -1,0 +1,160 @@
+.dashboard-container {
+    min-height: 100vh;
+    padding: 120px 24px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dashboard-header {
+    margin-bottom: 48px;
+}
+
+.dashboard-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+.dashboard-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+}
+
+.dashboard-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--text-dark);
+}
+
+.summary-card {
+    grid-column: span 8;
+    display: flex;
+    flex-direction: column;
+}
+
+.garden-card {
+    grid-column: span 4;
+}
+
+.history-card {
+    grid-column: span 12;
+}
+
+/* Progress Section */
+.progress-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.progress-bar-bg {
+    height: 16px;
+    background: var(--light);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+    border-radius: var(--radius-full);
+}
+
+.target-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    text-align: right;
+}
+
+.btn-full-width {
+    width: 100%;
+}
+
+.mt-6 {
+    margin-top: 24px;
+}
+
+/* Garden Placeholder */
+.garden-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 200px;
+    background: var(--light);
+    border-radius: var(--radius-md);
+    padding: 24px;
+}
+
+.plant-image-mock {
+    font-size: 4rem;
+    margin-bottom: 16px;
+}
+
+.garden-placeholder p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Empty State */
+.empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    background: var(--light);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+
+    .summary-card,
+    .garden-card {
+        grid-column: span 12;
+    }
+}
+
+@media (max-width: 600px) {
+    .dashboard-container {
+        padding: 100px 16px 40px;
+    }
+
+    .dashboard-title {
+        font-size: 2rem;
+    }
+
+    .dashboard-card {
+        padding: 24px;
+    }
+}

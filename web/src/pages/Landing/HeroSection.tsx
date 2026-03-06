@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import RevealWrapper from '../../components/common/RevealWrapper';
 import { useEffect, useRef } from 'react';
+import { useAuthStore } from '../../store/authStore';
 import './Hero.css';
 
 const bars = [
@@ -12,6 +13,7 @@ const bars = [
 
 export default function HeroSection() {
     const barRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const { user } = useAuthStore();
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -44,7 +46,11 @@ export default function HeroSection() {
                     </RevealWrapper>
                     <RevealWrapper delay={0.36}>
                         <div className="hero-actions">
-                            <Link to="/signup" className="btn btn-primary">무료로 시작하기</Link>
+                            {user ? (
+                                <Link to="/dashboard" className="btn btn-primary">대시보드로 가기</Link>
+                            ) : (
+                                <Link to="/signup" className="btn btn-primary">무료로 시작하기</Link>
+                            )}
                             <a href="#features" className="btn btn-ghost">더 알아보기</a>
                         </div>
                     </RevealWrapper>
