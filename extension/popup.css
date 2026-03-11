@@ -1,0 +1,315 @@
+/* ── 기본 리셋 ── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 320px;
+    min-height: 200px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #fff;
+    color: #1c1916;
+    font-size: 13px;
+}
+
+/* ── 헤더 ── */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px 12px;
+    border-bottom: 1px solid rgba(28, 25, 22, 0.08);
+    background: linear-gradient(135deg, #fff8f5 0%, #ffffff 100%);
+}
+
+.logo-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.header-text {
+    flex: 1;
+}
+
+.header-text h1 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #D97757;
+    line-height: 1.2;
+}
+
+.header-text p {
+    font-size: 11px;
+    color: #888;
+    margin-top: 1px;
+}
+
+.streak-badge {
+    font-size: 12px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ff7043, #ff8a65);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.streak-badge.hidden {
+    display: none;
+}
+
+/* ── 섹션 ── */
+.section {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(28, 25, 22, 0.06);
+}
+
+.section:last-of-type {
+    border-bottom: none;
+}
+
+.section-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+/* ── 현황 리스트 ── */
+.stats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stat-item {
+    background: #fafafa;
+    border: 1px solid rgba(28, 25, 22, 0.07);
+    border-radius: 8px;
+    padding: 10px 12px;
+}
+
+.stat-item.achieved {
+    border-color: #4caf50;
+    background: #f1fdf2;
+}
+
+.stat-item.blocked {
+    border-color: #D97757;
+    background: #fff8f5;
+}
+
+.stat-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.stat-domain {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1c1916;
+}
+
+.stat-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+
+.stat-badge.ok {
+    background: #e8f5e9;
+    color: #388e3c;
+}
+
+.stat-badge.over {
+    background: #fff3e0;
+    color: #D97757;
+}
+
+.stat-bar-bg {
+    height: 4px;
+    background: rgba(28, 25, 22, 0.08);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.stat-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.4s ease;
+}
+
+.stat-bar-fill.ok {
+    background: #66bb6a;
+}
+
+.stat-bar-fill.over {
+    background: #D97757;
+}
+
+.stat-time {
+    font-size: 10px;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ── 폼 ── */
+.add-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid rgba(28, 25, 22, 0.15);
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+    transition: border 0.15s;
+    color: #1c1916;
+    background: #fff;
+}
+
+.input:focus {
+    border-color: #D97757;
+}
+
+.limit-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.limit-input {
+    width: 80px;
+    flex-shrink: 0;
+}
+
+.unit {
+    font-size: 12px;
+    color: #888;
+    flex-shrink: 0;
+}
+
+.btn-add {
+    flex: 1;
+    padding: 8px;
+    background: #D97757;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.btn-add:hover {
+    background: #c96840;
+}
+
+.form-error {
+    font-size: 11px;
+    color: #e53935;
+    padding: 4px 0;
+}
+
+.form-error.hidden {
+    display: none;
+}
+
+/* ── 규칙 목록 ── */
+.rules-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.rule-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fafafa;
+    border: 1px solid rgba(28, 25, 22, 0.07);
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+.rule-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.rule-domain {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1c1916;
+}
+
+.rule-limit {
+    font-size: 11px;
+    color: #888;
+}
+
+.btn-delete {
+    background: none;
+    border: none;
+    color: #ccc;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: color 0.15s;
+    line-height: 1;
+}
+
+.btn-delete:hover {
+    color: #e53935;
+}
+
+/* ── Empty State ── */
+.empty-state {
+    font-size: 12px;
+    color: #bbb;
+    text-align: center;
+    padding: 8px 0;
+}
+
+/* ── Footer ── */
+.footer {
+    padding: 12px 16px;
+}
+
+.btn-offlo {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(135deg, #D97757, #e8956e);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.btn-offlo:hover {
+    opacity: 0.9;
+}

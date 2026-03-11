@@ -1,0 +1,54 @@
+{
+    "manifest_version": 3,
+    "name": "Offlo — 사이트 사용 시간 제한",
+    "short_name": "Offlo",
+    "description": "사이트별 사용 시간을 제한하고, Offlo 정원과 연동해 식물을 키우세요.",
+    "version": "1.0.0",
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icons/icon16.png",
+            "48": "icons/icon48.png",
+            "128": "icons/icon128.png"
+        },
+        "default_title": "Offlo"
+    },
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "permissions": [
+        "storage",
+        "tabs",
+        "alarms",
+        "webNavigation",
+        "activeTab"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "externally_connectable": {
+        "matches": [
+            "https://offlo-app.web.app/*",
+            "http://localhost:5173/*",
+            "http://localhost:5174/*",
+            "http://localhost:5175/*",
+            "http://localhost:5176/*"
+        ]
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "blocked.html"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ]
+}

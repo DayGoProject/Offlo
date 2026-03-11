@@ -83,3 +83,42 @@ export async function getActiveGoal(uid: string): Promise<GoalData | null> {
         .find(g => g.status === 'active');
     return active || null;
 }
+
+// ─── 식물 성장 단계 계산 ─────────────────────────────────────
+const PLANT_LEVEL_THRESHOLDS = [0, 60, 180, 360, 720, 1440];
+
+function calcLevel(totalMinutes: number): number {
+    for (let i = PLANT_LEVEL_THRESHOLDS.length - 1; i >= 0; i--) {
+        if (totalMinutes >= PLANT_LEVEL_THRESHOLDS[i]) return i;
+    }
+    return 0;
+}
+
+// ─── 식물 레벨업 (성장량 추가) ─────────────────────────────────
+export async function levelUpPlant(uid: string, growthMinutes: number): Promise<PlantData> {
+    const existing = await getPlantData(uid);
+    const prevMinutes = existing?.totalDetoxMinutes ?? 0;
+    const newTotal = prevMinutes + growthMinutes;
+    const newLevel = calcLevel(newTotal);
+    const updated: Partial<PlantData> = { level: newLevel, totalDetoxMinutes: newTotal };
+    await updatePlantData(uid, updated);
+    return { level: newLevel, totalDetoxMinutes: newTotal, lastUpdated: Timestamp.now() };
+}
+
+// ─── 스트릭 조회 ─────────────────────────────────────────────
+export interface StreakData {
+    count: number;
+    lastDate: string;
+}
+
+export async function getStreak(uid: string): Promise<StreakData> {
+    const ref = doc(db, 'users', uid, 'garden', 'streak');
+    const snap = await getDoc(ref);
+    return snap.exists() ? (snap.data() as StreakData) : { count: 0, lastDate: '' };
+}
+
+// ─── 스트릭 저장 ─────────────────────────────────────────────
+export async function saveStreak(uid: string, data: StreakData): Promise<void> {
+    const ref = doc(db, 'users', uid, 'garden', 'streak');
+    await setDoc(ref, data, { merge: true });
+}

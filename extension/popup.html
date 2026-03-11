@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Offlo</title>
+    <link rel="stylesheet" href="popup.css" />
+</head>
+
+<body>
+    <div class="header">
+        <img src="icons/icon48.png" alt="Offlo" class="logo-img" />
+        <div class="header-text">
+            <h1>Offlo</h1>
+            <p id="today-summary">로딩 중...</p>
+        </div>
+        <div id="streak-badge" class="streak-badge hidden">🔥 <span id="streak-count">0</span>일</div>
+    </div>
+
+    <!-- ── 오늘의 현황 ── -->
+    <section class="section">
+        <div class="section-title">오늘의 사용 현황</div>
+        <div id="stats-list" class="stats-list">
+            <div class="empty-state">아직 등록된 사이트가 없어요</div>
+        </div>
+    </section>
+
+    <!-- ── 사이트 추가 폼 ── -->
+    <section class="section">
+        <div class="section-title">사이트 추가</div>
+        <form id="add-form" class="add-form">
+            <input type="text" id="domain-input" class="input" placeholder="youtube.com" autocomplete="off"
+                spellcheck="false" />
+            <div class="limit-row">
+                <input type="number" id="limit-input" class="input limit-input" placeholder="30" min="1" max="1440" />
+                <span class="unit">분</span>
+                <button type="submit" class="btn-add">추가</button>
+            </div>
+        </form>
+        <div id="form-error" class="form-error hidden"></div>
+    </section>
+
+    <!-- ── 등록된 규칙 목록 ── -->
+    <section class="section">
+        <div class="section-title">등록된 사이트</div>
+        <ul id="rules-list" class="rules-list">
+            <div class="empty-state">추가된 목록이 없어요</div>
+        </ul>
+    </section>
+
+    <!-- ── Offlo 연동 버튼 ── -->
+    <div class="footer">
+        <button id="open-offlo-btn" class="btn-offlo">
+            🌱 Offlo 대시보드 열기
+        </button>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>
