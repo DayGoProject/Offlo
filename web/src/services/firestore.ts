@@ -27,6 +27,8 @@ export interface PlantData {
     level: number;
     totalDetoxMinutes: number;
     lastUpdated: Timestamp;
+    wateredAt?: string; // 'YYYY-MM-DD' 형식, 최근 물을 준 날짜
+    wateredMinutesToday?: number; // 오늘 이미 물을 준 전체 시간(분)
 }
 
 export interface GoalData {

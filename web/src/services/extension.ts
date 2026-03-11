@@ -12,6 +12,7 @@ export interface SiteStat {
     domain: string;
     limitMinutes: number;
     usedMinutes: number;
+    remainingMinutes: number;
     achieved: boolean;
     savedMinutes: number;
 }
@@ -92,14 +93,22 @@ export async function getExtensionTodayData(): Promise<ExtensionTodayData | null
 }
 
 /**
- * 오늘 달성 데이터를 기반으로 식물 성장량(분) 계산
- * - 기본: 달성한 사이트당 절약된 시간(분)
- * - 전체 달성 시: 보너스 30분 추가
- * - 연속 달성 N일: 추가 N * 10분 보너스
+ * 오늘 차단 설정된 사이트들의 제한 시간 합산으로 식물 성장량 계산
+ * - 기본: 차단 완료(만료)된 사이트의 limitMinutes 합산
+ * - 차단 중인 사이트: remainingMinutes (지금까지 차단된 시간) 합산
+ * - 연속 달성 스트릭: +5분 × 스트릭 수 (보너스)
  */
 export function calculatePlantGrowth(data: ExtensionTodayData): number {
-    const baseSaved = data.totalSavedMinutes;
-    const allBonus = data.allAchieved ? 30 : 0;
-    const streakBonus = data.streak * 10;
-    return baseSaved + allBonus + streakBonus;
+    const base = data.siteStats.reduce((sum, s) => {
+        if (s.achieved) {
+            // 차단 완료 → 설정한 전체 시간 적용
+            return sum + s.limitMinutes;
+        } else {
+            // 차단 중 → 지금까지 차단된 시간(limitMinutes - remainingMinutes)
+            const elapsed = s.limitMinutes - (s.remainingMinutes ?? 0);
+            return sum + Math.max(0, elapsed);
+        }
+    }, 0);
+    const streakBonus = data.streak * 5;
+    return base + streakBonus;
 }

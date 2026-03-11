@@ -74,22 +74,30 @@ const GardenPage: React.FC = () => {
     useEffect(() => { loadData(); }, [loadData]);
 
     // ── 물주기 (성장 적용) ─────────────────────────────────────────────────────
-    const handleWater = async () => {
-        if (!user || !plant || !extData || wateringAnim) return;
+    const todayStr = new Date().toISOString().split('T')[0];
+    const isToday = plant?.wateredAt === todayStr;
+    const claimedMinutesToday = isToday ? (plant?.wateredMinutesToday || 0) : 0;
 
-        const growthMinutes = calculatePlantGrowth(extData);
-        if (growthMinutes <= 0) return;
+    // 오늘 전체 달성 가능한 성장 시간
+    const totalGrowthToday = extData ? calculatePlantGrowth(extData) : 0;
+    // 아직 받지 않은 남은 성장 시간
+    const growthAvailable = Math.max(0, totalGrowthToday - claimedMinutesToday);
+
+    const handleWater = async () => {
+        if (!user || !plant || !extData || wateringAnim || growthAvailable <= 0) return;
 
         setWateringAnim(true);
 
         const prevStage = getStage(plant.totalDetoxMinutes);
-        const newTotal = plant.totalDetoxMinutes + growthMinutes;
+        const newTotal = plant.totalDetoxMinutes + growthAvailable;
         const newLevel = getStage(newTotal).level;
         const didLevelUp = newLevel > prevStage.level;
 
         const newPlant: Partial<PlantData> = {
             level: newLevel,
             totalDetoxMinutes: newTotal,
+            wateredAt: todayStr,
+            wateredMinutesToday: claimedMinutesToday + growthAvailable,
         };
 
         await updatePlantData(user.uid, newPlant);
@@ -120,7 +128,6 @@ const GardenPage: React.FC = () => {
     const progressToNext = nextStage
         ? ((totalMinutes - currentStage.minDetox) / (nextStage.minDetox - currentStage.minDetox)) * 100
         : 100;
-    const growthAvailable = extData ? calculatePlantGrowth(extData) : 0;
 
     return (
         <div className="garden-page">
@@ -262,7 +269,7 @@ const GardenPage: React.FC = () => {
                                 ))}
                             </div>
 
-                            {/* 물주기 버튼 */}
+                            {/* 물주기 버튼 — 추가 디톡스 발생 시 여러 번 가능 */}
                             {growthAvailable > 0 ? (
                                 <button
                                     className="btn btn-primary water-btn"
@@ -271,9 +278,13 @@ const GardenPage: React.FC = () => {
                                 >
                                     💧 식물에게 물 주기 (+{formatTime(growthAvailable)})
                                 </button>
+                            ) : totalGrowthToday > 0 ? (
+                                <div className="water-hint">
+                                    ✅ 오늘 모은 디톡스 시간은 모두 줬어요! 추가 디톡스 완료 시 다시 줄 수 있습니다.
+                                </div>
                             ) : (
                                 <div className="water-hint">
-                                    오늘 목표를 달성하면 식물이 성장해요!
+                                    차단 설정 후 시간이 쌓이면 물을 줄 수 있어요!
                                 </div>
                             )}
                         </div>
