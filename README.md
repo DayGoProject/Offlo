@@ -7,30 +7,40 @@
 
 ## 📖 프로젝트 소개
 
-**Offlo**는 현대인의 스마트폰 과의존 문제를 해결하기 위해 기획된 디지털 웰니스(Digital Wellness) 웹 애플리케이션입니다. 
+**Offlo**는 현대인의 스마트폰 및 인터넷 과의존 문제를 해결하기 위해 기획된 디지털 웰니스(Digital Wellness) 서비스입니다. 
 
-복잡한 연동 과정 없이 **내 스마트폰의 스크린 타임 화면을 캡처해서 올리기만 하면**, AI가 사용 패턴을 분석하여 맞춤형 디톡스 솔루션을 제안합니다. 또한, 목표를 달성할 때마다 나만의 '반려 식물'이 자라나는 게이미피케이션(Gamification) 요소를 도입하여 즐겁고 지속 가능한 습관 형성을 돕습니다.
+웹 애플리케이션과 크롬/엣지 확장 프로그램을 연동하여, 사용자의 스마트폰 및 PC 사용 습관을 전방위로 관리할 수 있습니다. 
+내 스마트폰의 스크린 타임 화면을 캡처해서 웹에 올리면 AI가 사용 패턴을 분석해 주고, PC 확장 프로그램에서는 불필요한 웹사이트의 사용 시간을 제한할 수 있습니다. 
+목표를 달성할 때마다 나만의 '반려 식물'이 자라나는 게이미피케이션(Gamification) 요소로 즐겁게 디지털 디톡스 습관을 형성하세요.
 
 ### ✨ 주요 기능
-- **📸 스크린 타임 AI 분석**: 스크린 타임 캡처 이미지(캡처본)를 업로드하면 AI(Gemini Vision API)가 앱별 사용량을 추출하고 취약점을 분석합니다.
-- **🌱 반려 식물 키우기 (게이미피케이션)**: 설정한 디톡스 목표(예: 인스타그램 사용 1시간 이하)를 달성하면 식물이 성장하고 새로운 칭호(배지)를 획득합니다.
-- **📊 디톡스 현황 대시보드**: 주간/월간 스크린 타임 변화 추이와 달성률을 한눈에 파악할 수 있습니다.
-- **🔐 간편하고 안전한 인증**: Firebase를 활용한 이메일 및 Google 소셜 로그인을 제공합니다.
+- **📸 스마트폰 스크린 타임 AI 분석 (Web)**: 스크린 타임 캡처 이미지를 업로드하면 Google Gemini Vision API를 연동한 Cloud Functions가 앱별 사용량을 추출하고 취약점 및 개선 조언을 제공합니다.
+- **🛡️ 웹사이트 차단 및 관리 (Extension)**: Chrome/Edge 확장 프로그램을 통해 사이트별 사용 제한 시간을 설정하고, 제한 시간이 초과되면 접근을 차단합니다.
+- **🌱 반려 식물 키우기 (게이미피케이션)**: 웹과 익스텐션에서 디톡스 목표(예: 인스타그램 1시간 이하 사용)를 달성하면 정원(Garden)의 식물이 성장하고 새로운 칭호(배지)를 획득합니다.
+- **📊 디톡스 현황 대시보드**: 주간/월간 스크린 타임 변화 추이와 달성률을 한눈에 파악할 수 있는 사용자 대시보드를 제공합니다.
+- **🔐 간편하고 안전한 인증**: Firebase Authentication을 활용한 이메일 및 Google 소셜 로그인 지원.
+- **📑 통합 정보 페이지**: 서비스 소개(About), 자주 묻는 질문(FAQ), 개인정보처리방침(Privacy), 이용약관(Terms) 등 상세한 푸터(Footer) 페이지 구성을 제공합니다.
 
 ---
 
 ## 🛠️ 기술 스택 (Tech Stack)
 
-### Frontend
+### Frontend (Main Web App)
 - **Framework**: [React 18](https://reactjs.org/) + [Vite](https://vitejs.dev/)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **State Management**: [Zustand](https://github.com/pmndrs/zustand)
 - **Routing**: [React Router DOM v6](https://reactrouter.com/)
 - **Styling & Animation**: Vanilla CSS (Global Design Token System) + [Framer Motion](https://www.framer.com/motion/)
 
+### Frontend (Chrome Extension)
+- **Manifest**: Chrome Manifest V3
+- **Language**: JavaScript (Modular approach)
+- **Communication**: Service Worker & Message Passing, Externally Connectable API 연동
+
 ### Backend (BaaS) & AI
-- **Database & Auth**: [Google Firebase](https://firebase.google.com/) (Authentication, Cloud Firestore, Cloud Storage)
-- **AI Integration**: Google Gemini Vision API (Cloud Functions 연동 예정)
+- **Database & Auth**: [Google Firebase](https://firebase.google.com/) (Authentication, Cloud Firestore, Cloud Storage, Hosting)
+- **Serverless functions**: Firebase Cloud Functions (Gen 2, Node.js)
+- **AI Integration**: Google Gemini 2.5 Flash Vision API
 
 ---
 
@@ -42,43 +52,62 @@
 - [Node.js](https://nodejs.org/) (v20 이상 권장)
 - npm 혹은 yarn
 
-### 2. 설치 및 실행
+### 2. 웹 앱 설치 및 실행
 ```bash
 # 1. 레포지토리 클론
 git clone https://github.com/DayGoProject/Offlo.git
 
 # 2. 웹 프로젝트 폴더로 이동
-cd offlo/web
+cd Offlo/web
 
 # 3. 패키지 설치
 npm install
 
 # 4. 환경 변수 설정
-# web 폴더 내에 `.env.local` 파일을 생성하고 Firebase 설정값을 기입합니다.
-# (VITE_FIREBASE_API_KEY, VITE_FIREBASE_AUTH_DOMAIN 등)
+# web 폴더 내에 `.env.local` 파일을 생성하고 Firebase 환경 설정 값을 기입합니다.
 
 # 5. 개발 서버 실행
 npm run dev
 ```
-개발 서버가 실행되면 웹 브라우저에서 `http://localhost:5173` 으로 접속하여 확인할 수 있습니다.
+
+### 3. 클라우드 함수(Cloud Functions) 배포
+```bash
+cd Offlo/functions
+npm install
+# functions 폴더 내에 `.env` 파일을 생성하고 `GEMINI_API_KEY` 값을 기입합니다.
+npm run build
+firebase deploy --only functions
+```
+
+### 4. 확장 프로그램(Extension) 설치 절차
+1. Chromium 기반 브라우저(Chrome, Edge 등)에서 확장 프로그램 관리 페이지(`chrome://extensions`)로 접속합니다.
+2. 우측 상단의 **'개발자 모드(Developer mode)'**를 켭니다.
+3. 좌측 상단의 **'압축해제된 확장 프로그램을 로드합니다(Load unpacked)'** 버튼을 클릭합니다.
+4. 소스 코드의 `Offlo/extension` 폴더를 선택하여 불러옵니다.
 
 ---
 
 ## 📂 폴더 구조 (Directory Structure)
 
 ```text
-web/
-├── public/                 # 정적 리소스 (favicon, images 등)
-└── src/
-    ├── components/         # 공통 컴포넌트 (UI, Layout 등)
-    ├── hooks/              # 커스텀 React Hooks
-    ├── pages/              # 라우팅 단위의 페이지 컴포넌트
-    ├── services/           # 외부 API 및 Firebase 통신 로직
-    ├── store/              # Zustand 전역 상태 스토어
-    ├── types/              # TypeScript 타입 및 인터페이스 정의
-    ├── utils/              # 유틸리티 함수
-    ├── App.tsx             # 최상위 라우팅 및 레이아웃 설정
-    └── main.tsx            # React 앱 진입점
+Offlo/
+├── extension/              # Chrome/Edge 확장 프로그램 소스
+│   ├── background.js       # 서비스 워커
+│   ├── popup.html/css/js   # 익스텐션 팝업 UI 및 로직
+│   └── manifest.json       # 익스텐션 설정 파일
+├── functions/              # Firebase Cloud Functions 소스 (AI 연동)
+│   └── src/
+│       ├── index.ts        # 함수 엔트리 포인트
+│       └── gemini.ts       # Gemini Vision API 처리 로직
+├── web/                    # 메인 React 웹 애플리케이션
+│   ├── public/             # 정적 리소스
+│   └── src/
+│       ├── components/     # UI, Layout 공통 컴포넌트
+│       ├── pages/          # 대시보드, 랜딩, 푸터 정보 페이지 등
+│       ├── services/       # Firebase 연동 로직
+│       ├── store/          # 상태 관리 (Zustand)
+│       └── App.tsx         # 전체 라우팅
+├── firebase.json           # Firebase 배포 및 룰 설정 가이드
 ```
 
 ---
